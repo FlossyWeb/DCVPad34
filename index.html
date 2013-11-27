@@ -14,11 +14,25 @@
         <script src="jquery_v1.8.3.min.js"></script>
         <script src="phonegap.js"></script>
         <script type="text/javascript">		
-            document.addEventListener("deviceready", function(){
-              if(navigator.network.connection.type == Connection.NONE){
-                $("body").empty().append('<img src="no_network.png" onClick="window.location.reload()" />');
-              }
-            });
+			document.addEventListener("deviceready", onDeviceReady, false);
+			function onDeviceReady() {
+				// Gestion des boutons matériels
+				document.addEventListener("backbutton", onBackKeyDown, false);
+				document.addEventListener("menubutton", onMenuKeyDown, false);
+				if(navigator.network.connection.type == Connection.NONE){
+					$("body").empty().append('<img src="no_network.png" onClick="window.location.reload()" />');
+				}
+            }
+			// GESTION DES BOUTONS MATERIEL
+			// Bouton retour
+			function onBackKeyDown() {
+				//history.back();
+				//changePage('#home');
+			}
+			// Bouton menu
+			function onMenuKeyDown() {
+				//changePage('#home');
+			}
 		</script>
         <style type="text/css">
 			h1 {
